@@ -1,0 +1,36 @@
+:root{
+    --prim-clr :#3f3f90;
+    --gray-clr : #e6e6e6;
+    --scd-clr : #8b1f25;
+}
+header {
+    background-color: var(--prim-clr);
+}
+footer {
+    background-color: var(--gray-clr);
+}
+.bg-prim-clr {
+    background-color: var(--prim-clr);
+}
+.bg-gray-clr {
+    background-color: var(--gray-clr);
+}
+.bg-scd-clr {
+    background-color: var(--scd-clr);
+}
+
+
+.text-prim-clr {
+    color: var(--prim-clr);
+}
+.text-gray-clr {
+    color: var(--gray-clr);
+}
+.text-scd-clr {
+    color: var(--scd-clr);
+}
+
+#hero {
+    min-height: 91vh;
+}
+

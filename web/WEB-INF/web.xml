@@ -1,0 +1,46 @@
+<web-app>
+<!-- Login -->
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>controler.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+<!-- Home -->
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>controler.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+<!-- JEUX - Formulaire -->
+    <servlet> 
+        <servlet-name>JeuxFormulaire</servlet-name>
+        <servlet-class>controler.JeuxFormulaire</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JeuxFormulaire</servlet-name>
+        <url-pattern>/jeux-formulaire</url-pattern>
+    </servlet-mapping>
+
+<!-- JEUX - Read -->
+    <servlet> 
+        <servlet-name>Jeux</servlet-name>
+        <servlet-class>controler.JeuxServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Jeux</servlet-name>
+        <url-pattern>/jeux</url-pattern>
+    </servlet-mapping>
+
+</web-app>
