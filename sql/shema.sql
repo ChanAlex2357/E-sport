@@ -41,6 +41,7 @@ CREATE TABLE Tournoi(
 CREATE TABLE Equipe(
    idEquipe INTEGER,
    nomEquipe VARCHAR(50)  NOT NULL,
+   initial VARCHAR(50) NOT NULL,
    idCategory INTEGER NOT NULL,
    PRIMARY KEY(idEquipe),
    FOREIGN KEY(idCategory) REFERENCES CategoryEquipe(idCategory)

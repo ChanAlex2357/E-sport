@@ -43,7 +43,7 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
   - [x] formulaire-jeux.html
     - [x] formulaire (nom , type)
   - read-jeux.html
-    - formulaire de filtre ( choisir le type )
+    - [x] formulaire de filtre ( choisir le type )
     - [x] tableau de la liste des jeux ( idJeux , nom , type)
 - fonction (MODEL)
   - TypeJeux (idType , nomType)
@@ -84,3 +84,126 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
         - recuperer l'id
         - update
     - redirection jeux
+
+## Equipe
+
+- affichage (VIEW)
+  - equipe-formulaire.jsp
+    - champs( nom , category[] )
+  - equipe-read
+    - formulaire filtre par category
+    - tableau liste des equipes
+- fonction (MODEL)
+  - CategoryEquipe
+    - constructeurs
+      - id , nom , initial
+      - id
+    - get , set
+    - getById
+    - getAll
+  - Equipe
+    - constructeurs
+      - id , nom , idCategory
+      - id
+    - get , set
+    - getById
+    - getAll
+    - save
+    - delete
+    - update
+    - Filtres
+      - getByIdCategory
+- donnee (SQL)
+  - CategoryEquipe
+    - amateur
+    - semi-pro
+    - pro
+  - Equipe
+    - Insquare (IS) semi
+    - Exelcior (ExE) pro
+    - Inviktus (IK) semi
+    - Gascom Esport (GES) pro
+    - Kudeta (KDT) pro
+- Integraton (SERVLET)
+  - EquipeFormulaire
+    - doGet
+      - recuperer la liste des Category
+        - CategoryEquipe getAll()
+      - dispatch => equipe-formulaire
+  - EquipeServlet
+    - doGet
+      - Category Equipe getAll()
+      - action = read
+        - Equipe.getAll()
+      - else action = delete && equipe != null
+        - Equipe.delete()
+      - else filtre idCategory
+        - Equipe.getByIdCategory(idCategory)
+    - doPost
+      - recuperation des valeurs des champs
+      - if action = create
+        - Equipe.save
+      - else action = update && idEquipe != NULL
+        - Equipe.update
+
+## Joueur
+
+- affichage (VIEW)
+  - joueur-formulaire.jsp
+    - champs ( nom , pseudo , dateNaissance , equipe[] )
+  - joueur-read.jsp
+    - formulaire de filtre
+      - age min - age max
+      - equipe[]
+    - liste des Joueurs
+- fonction (MODEL)
+  - Joueur
+    - constructeurs
+      - id , nom , pseudo , dateNaissance , idEquipe
+      - id => getById
+    - get , set
+    - getById
+    - getAll
+    - save
+    - delete
+    - update
+    - Filtre
+      - getByAge ( min , max)
+        - Exeption <> min > max
+      - getByEquipe( idEquipe )
+      - getByAgeAndEquipe(min , max , idEquipe)
+- donnee (SQL)
+  - ChatGpt existe
+- Integraton (SERVLET)
+  - JoueurFormulaire
+    - doGet
+      - recuperer la liste des equipes
+        - Equipe.getAll
+      - dispatch => joueur-formulaire
+  - JoueurServlet
+    - doGet
+      - recuperer la liste des equipes
+        - Equipe.getAll
+      - action = read
+        - Joueur.getAll
+      - action = delete
+        - Joueur.delete
+      - filtre = age.min-max
+        - Joueur.getByAge(ageMin , ageMax)
+      - filtre = idEquipe
+        - Joueur.getByEquipe(idEquipe)
+      - filtre = age.min-max , idEquipe
+        - Joueur.getByAgeEquipe( min , max , idE)
+    - doPost
+      - recuperer les valeurs des champs => new Joueur()
+      - action = create
+        - Joueur.save
+      - action = update
+        - Joueur.update
+
+## Tournoi
+
+- affichage (VIEW)
+- fonction (MODEL)
+- donnee (SQL)
+- Integraton (SERVLET)
