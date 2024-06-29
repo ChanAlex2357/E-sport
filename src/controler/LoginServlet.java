@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Organisateur;
+import jakarta.servlet.http.HttpSession;
 
 public class LoginServlet extends HttpServlet{
 @Override
@@ -23,6 +24,8 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
         if (orga.getIdOrganisateur() != 0) {
             redirection = "home";
         }
+        HttpSession session = req.getSession(true);
+        session.setAttribute("organisateur", orga);
     }
     catch (Exception err) {
         resp.getWriter().println("erorr ");    
