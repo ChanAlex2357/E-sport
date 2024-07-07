@@ -6,6 +6,7 @@
 <%
     List<Equipe> equipes = ( List<Equipe> )request.getAttribute("listEquipe");
     Joueur toUpdate = (Joueur) request.getAttribute("toUpdate");
+    String validation = "Nouveau Joueur";
 
     String action = "create";
     String nom = "Chan Alex";
@@ -19,6 +20,7 @@
         date = toUpdate.getDateNaissance();
         pseudo = toUpdate.getPseudo();
         idEquipe = toUpdate.getIdEquipe();
+        validation = "Modifier Joueur";
     }
 %>
 <div id="hero py-5">
@@ -70,7 +72,7 @@
                             </div>
                         </div>
                         <div>
-                            <input required type="submit" class=" text-light btn bg-prim-clr" value="Nouveau Joueur">
+                            <input required type="submit" class=" text-light btn bg-prim-clr" value="<%=validation%>">
                             <a href="joueur" role="button" class="btn btn-danger">Annuler</a>
                         </div>
                     </form>

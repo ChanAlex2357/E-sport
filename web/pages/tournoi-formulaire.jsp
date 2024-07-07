@@ -4,10 +4,11 @@
 <%@ page import="model.Tournoi"%>
 <%@ page import="java.sql.Date"%>
 <%
-  List<Jeux> jeux = (List<Jeux>) request.getAttribute("listJeux");
-  List<Tournoi> tournois = ( List<Tournoi> )request.getAttribute("listTournois");
+    List<Jeux> jeux = (List<Jeux>) request.getAttribute("listJeux");
+    List<Tournoi> tournois = ( List<Tournoi> )request.getAttribute("listTournois");
+    String validation = "Nouveau Tournoi";
 
-   Tournoi toUpdate = (Tournoi) request.getAttribute("toUpdate");
+    Tournoi toUpdate = (Tournoi) request.getAttribute("toUpdate");
     String action = "create";
 
     String nom = "";
@@ -22,6 +23,7 @@
         duree = toUpdate.getDuree();
         lieu = toUpdate.getLieuTournoi();
         idJeux = toUpdate.getIdJeux();
+        validation = "Modifier Tournoi";
     }
 %>
 <div id="hero py-5">
@@ -68,7 +70,7 @@
                             </select>
                         </div>
                         <div>
-                            <input type="submit" class=" text-light btn bg-prim-clr" value="Nouveau Tournoi">
+                            <input type="submit" class=" text-light btn bg-prim-clr" value="<%=validation%>">
                             <a href="tournoi" role="button" class="btn btn-danger">Annuler</a>
                         </div>
                     </form>

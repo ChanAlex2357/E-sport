@@ -7,6 +7,7 @@
   List<Jeux> listJeux = (List<Jeux>) request.getAttribute("listJeux");
 %>
 <div id="hero" class=" py-5">
+  <!--* FILTRE -->
     <div id="filtre" class="p-5 bg-light mb-3">
         <div class="container-fluid">
           <!-- FILTRE PAR TYPE DE JEU -->
@@ -32,17 +33,20 @@
           </form>
         </div>
     </div>
+  <!--? END FILTRE -->
+  <!--* MAIN CONTENT -->
     <div class="container">
-        <div id="">
+        <!-- * BIG TITLE -->
           <div class="row">
-            <div class="col-12 col-md">
+            <div class="col-12 col-md-9">
               <h1 class="h1 col-12 col-md" id="">Liste des jeux</h1>
             </div>
-            <div>
+            <div class="col">
                 <a href="jeux-formulaire" role="button" class="btn btn-success"> Ajouter </a>
             </div>
           </div>
-          <!-- * Version tableau simple * -->
+        <!-- ? END BIG TITLE  -->
+          <!-- * DATA LISTE -->
           <table class="table table-hover">
             <thead>
               <tr>
@@ -58,7 +62,6 @@
                   <th scope="row"> <%= jeux.getIdJeux() %> </th>
                   <td> <%= jeux.getNomJeux() %> </td>
                   <td> <%= jeux.getTypeJeux().getNomType() %> </td>
-                  </td>
                   <td>
                     <a href="jeux-formulaire?action=update&id=<%= jeux.getIdJeux() %>" class="btn btn-outline-dark" role="button">
                       <i class="bi bi-pen-fill"></i>
@@ -74,7 +77,8 @@
               } %>
             </tbody>
           </table>
-        </div>
+          <!-- ? END DATA LISTE -->
     </div>
+  <!--? END MAIN CONTENT -->
 </div>
 <%@ include file="static/footer.html"%>

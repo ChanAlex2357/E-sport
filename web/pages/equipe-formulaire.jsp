@@ -4,7 +4,8 @@
 <%@ page import="model.Equipe"%>
 <%
     List<CategoryEquipe> categories = (List<CategoryEquipe>) request.getAttribute("listCategory");
-    
+    String validation = "Nouvelle Equipe";
+
     Equipe toUpdate = (Equipe) request.getAttribute("toUpdate");
     String nom = "";
     String initial = "";
@@ -15,6 +16,7 @@
         nom = toUpdate.getNomEquipe();
         initial = toUpdate.getInitial();
         idCat = toUpdate.getIdCategory();
+        validation = "Modifier";
     }
 %>
 <div id="hero py-5">
@@ -51,7 +53,7 @@
                             </select>
                         </div>
                         <div>
-                            <input type="submit" class=" text-light btn bg-prim-clr" value="Nouvelle Equipe">
+                            <input type="submit" class=" text-light btn bg-prim-clr" value="<%=validation%>">
                             <a href="equipe" role="button" class="btn btn-danger">Annuler</a>
                         </div>
                     </form>

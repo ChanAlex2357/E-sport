@@ -7,6 +7,7 @@
   List<Tournoi> tournois = ( List<Tournoi> )request.getAttribute("listTournois");
 %>
 <div id="hero" class=" py-5">
+  <!-- * FILTRE -->
     <div id="filtre" class="p-5 bg-light mb-3">
         <div class="container-fluid">
           <!-- FILTRE PAR DATE -->
@@ -41,21 +42,21 @@
         </form>
       </div>
     </div>
+  <!-- ? END FILTRE -->
     <div class="container">
-        <div id="">
-          
-          <div class="row">
-            <div class="col-12 col-md-9">
-              <h1 class="h1" id="">Liste des tournois</h1>
-            </div>
-            <div class="col">
-                <a href="tournoi-formulaire" role="button" class="btn btn-success"> Ajouter </a>
-            </div>
+        <!-- * BIG TITLE -->
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <h1 class="h1" id="">Liste des tournois</h1>
           </div>
-          <!-- * Version tableau simple * -->
+          <div class="col">
+            <a href="tournoi-formulaire" role="button" class="btn btn-success"> Ajouter </a>
+          </div>
+        </div>
+        <!-- ? END BIG TITLE -->
+        <!-- * DATA LIST -->
           <table class="table table-hover">
             <thead>
-              
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom </th>
@@ -72,7 +73,7 @@
                   <th scope="row"> <%=t.getIdTournoi()%> </th>
                   <td> <%=t.getNomTournoi()%> </td>
                   <td> <%=t.getDateTournoi().toString() %> </td>
-                  <td> <%=t.getDuree()%></td>
+                  <td> <%=t.getDuree()%>J</td>
                   <td> <%=t.getLieuTournoi()%></td>
                   <td> <%=t.getJeux().getNomJeux()%> </td>
                   <td>
@@ -89,7 +90,7 @@
               <% }%>
             </tbody>
           </table>
-        </div>
+        <!-- ? DATA LIST -->
     </div>
 </div>
 <%@ include file="static/footer.html"%>

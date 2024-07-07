@@ -9,6 +9,7 @@
 %>
 
 <div id="hero" class=" py-5">
+  <!-- * FILTRE -->
     <div id="filtre" class="p-5 bg-light mb-3">
         <div class="container-fluid">
             <form action="joueur" method="get" class="mx-auto col-12 col-lg-6">
@@ -43,61 +44,59 @@
             </form>
         </div>
     </div>
+  <!-- ? END FILTRE -->
     <div class="container">
-        <div id="">
-          
-          <div class="row">
-            <div class="col-12 col-md-9">
-              <h1 class="h1" id="">Liste des joueurs</h1>
-            </div>
-            <div class="col">
-                <a href="joueur-formulaire" role="button" class="btn btn-success"> Ajouter </a>
-            </div>
+      <!-- * BIG TITLE -->
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <h1 class="h1" id="">Liste des joueurs</h1>
           </div>
-          <!-- * Version tableau simple * -->
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Age</th>
-                <th scope="col">Pseudo</th>
-                <th scope="col">Equipe</th>
-                <th scope="col" colspan="2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-              <% for( Joueur joueur : joueurs) { 
-                  final Equipe e = joueur.getEquipe();
-                  String equipeLayout = "Pas d'equipe" ;
-                  if( e.getIdEquipe() > 0){
-                    equipeLayout = e.getNomEquipe();
-                  }
-                %>
-                <tr>
-                  <th scope="row"> <%= joueur.getIdJoueur() %> </th>
-                  <td> <%= joueur.getNomJoueur() %> </td>
-                  <td> <%= joueur.getAge() %> </td>
-                  <td> <%= joueur.getPseudo() %> </td>
-                  <td> <%= equipeLayout %> </td>
-                  </td>
-                  <td>
-                    <a href="joueur-formulaire?action=update&id=<%= joueur.getIdJoueur() %>" class="btn btn-outline-dark" role="button">
-                      <i class="bi bi-pen-fill"></i>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="joueur?action=delete&id=<%= joueur.getIdJoueur() %>" class="btn btn-outline-dark" role="button">
-                      <i class="bi bi-trash"></i>
-                    </a>
-                  </td>
-                </tr>
-              <% } %>
-              
-            </tbody>
-          </table>
+          <div class="col">
+              <a href="joueur-formulaire" role="button" class="btn btn-success"> Ajouter </a>
+          </div>
         </div>
+      <!-- ? END BIG TITLE -->
+      <!-- * DATA LIST -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Age</th>
+              <th scope="col">Pseudo</th>
+              <th scope="col">Equipe</th>
+              <th scope="col" colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for( Joueur joueur : joueurs) { 
+                final Equipe e = joueur.getEquipe();
+                String equipeLayout = "Pas d'equipe" ;
+                if( e.getIdEquipe() > 0){
+                  equipeLayout = e.getNomEquipe();
+                }
+              %>
+              <tr>
+                <th scope="row"> <%= joueur.getIdJoueur() %> </th>
+                <td> <%= joueur.getNomJoueur() %> </td>
+                <td> <%= joueur.getAge() %> </td>
+                <td> <%= joueur.getPseudo() %> </td>
+                <td> <%= equipeLayout %> </td>
+                <td>
+                  <a href="joueur-formulaire?action=update&id=<%= joueur.getIdJoueur() %>" class="btn btn-outline-dark" role="button">
+                    <i class="bi bi-pen-fill"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="joueur?action=delete&id=<%= joueur.getIdJoueur() %>" class="btn btn-outline-dark" role="button">
+                    <i class="bi bi-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      <!-- ? END DATA LIST -->
     </div>
 </div>
 <%@ include file="static/footer.html"%>

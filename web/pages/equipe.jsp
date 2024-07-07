@@ -7,6 +7,7 @@
   List<Equipe> equipes = ( List<Equipe> )request.getAttribute("listEquipe");
 %>
 <div id="hero" class=" py-5">
+  <!-- * FILTRE -->
     <div id="filtre" class="p-5 bg-light mb-3">
         <div class="container-fluid">
             <form action="equipe" method="get" class="mx-auto col-12 col-lg-6" >
@@ -31,8 +32,9 @@
           </form>
         </div>
     </div>
+  <!--? END FILTRE -->
     <div class="container">
-        <div id="">
+        <!-- * BIG TITLE -->
           <div class="row">
             <div class="col-12 col-md-9">
               <h1 class="h1" id="">Liste des equipes E-Sport</h1>
@@ -41,7 +43,8 @@
                 <a href="equipe-formulaire" role="button" class="btn btn-success"> Ajouter </a>
             </div>
           </div>
-          <!-- * Version tableau simple * -->
+        <!-- ? END BIG TITLE -->
+          <!-- * DATA LIST -->
           <table class="table table-hover">
             <thead>
               <tr>
@@ -73,7 +76,7 @@
               <% } %>
             </tbody>
           </table>
-        </div>
+          <!-- ? END DATA LIST -->
     </div>
 </div>
 <%@ include file="static/footer.html"%>

@@ -4,7 +4,8 @@
 <%@ page import="model.Jeux"%>
 <%
     List<TypeJeux> listTypeJeux = (List<TypeJeux>) request.getAttribute("listTypeJeux");
-    
+    String validation = "Nouveau Jeu";
+
     Jeux toUpdate = (Jeux) request.getAttribute("toUpdate");
     String nom = "" ;
     int idType = 0 ;
@@ -15,6 +16,7 @@
         idType = toUpdate.getIdType();
         out.println(idType);
         action = "update"; 
+        validation =  "Modifier Jeu"
     }
 %>
 <div id="hero py-5">
@@ -48,7 +50,7 @@
                             </select>
                         </div>
                         <div>
-                            <input type="submit" class=" text-light btn bg-prim-clr" value="Nouveau Jeu">
+                            <input type="submit" class=" text-light btn bg-prim-clr" value="<%=validation%>">
                             <a href="jeux" role="button" class="btn btn-danger">Annuler</a>
                         </div>
                     </form>
