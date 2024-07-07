@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String dispatchPath = "pages/login.jsp";
+        String dispatchPath = "pages/login/login.jsp";
         req.getRequestDispatcher(dispatchPath).forward(req, resp);
     }
     @Override

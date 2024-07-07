@@ -57,7 +57,7 @@ public class EquipeServlet extends HttpServlet {
     /// Rediriger vers le formulaire
         req.setAttribute("listCategory", cat);
         req.setAttribute("listEquipe", equipe);
-        req.getRequestDispatcher("pages/equipe.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/equipe/equipe.jsp").forward(req, resp);
     }
 
     @Override

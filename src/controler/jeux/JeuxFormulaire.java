@@ -34,6 +34,6 @@ public class JeuxFormulaire extends HttpServlet{
 
     /// Rediriger vers le formulaire
         req.setAttribute("listTypeJeux", typeJeux);
-        req.getRequestDispatcher("pages/jeux-formulaire.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/jeux/jeux-formulaire.jsp").forward(req, resp);
     }
 }

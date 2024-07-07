@@ -53,7 +53,7 @@ public class JeuxServlet extends HomeServlet {
     /// Envoie des donnees
         req.setAttribute("listJeux", jeux);
         req.setAttribute("listTypeJeux", typeJeux);
-        req.getRequestDispatcher("pages/jeux.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/jeux/jeux.jsp").forward(req, resp);
     }
 
     @Override

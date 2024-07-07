@@ -63,7 +63,7 @@ public class JoueurServlet extends HttpServlet {
         }
         req.setAttribute("listEquipe", listEquipe);
         req.setAttribute("listJoueur", listJoueur);
-        req.getRequestDispatcher("pages/joueur.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/joueur/joueur.jsp").forward(req, resp);
     }
 
     @Override

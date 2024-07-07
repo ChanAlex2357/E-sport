@@ -30,6 +30,6 @@ public class JoueurFormulaire extends HttpServlet {
             e.printStackTrace();
         }
         req.setAttribute("listEquipe", listEquipe);
-        req.getRequestDispatcher("pages/joueur-formulaire.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/joueur/joueur-formulaire.jsp").forward(req, resp);
     }
 }

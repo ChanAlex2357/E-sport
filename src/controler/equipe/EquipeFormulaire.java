@@ -35,6 +35,6 @@ public class EquipeFormulaire extends HttpServlet {
 
     /// Rediriger vers le formulaire
         req.setAttribute("listCategory", cat);
-        req.getRequestDispatcher("pages/equipe-formulaire.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/equipe/equipe-formulaire.jsp").forward(req, resp);
     }
 }

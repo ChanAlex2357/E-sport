@@ -65,7 +65,7 @@ public class TournoiServlet extends HttpServlet{
     /// 
         req.setAttribute("listJeux", jeux);
         req.setAttribute("listTournois", tournois);
-        req.getRequestDispatcher("pages/tournoi.jsp").forward(req, resp);
+        req.getRequestDispatcher("pages/tournoi/tournoi.jsp").forward(req, resp);
     }
 
     @Override
