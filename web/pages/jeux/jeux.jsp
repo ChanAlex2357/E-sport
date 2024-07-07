@@ -82,3 +82,6 @@
   <!--? END MAIN CONTENT -->
 </div>
 <%@ include file="../static/footer.html"%>
+<script>
+  activeCurrentPage("jeux-link");
+</script>

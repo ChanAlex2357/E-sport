@@ -38,7 +38,7 @@ public class Organisateur {
 
     // Gets & Sets
     public int getIdOrganisateur() {
-        return idOrganisateur;
+        return this.idOrganisateur;
     }
     public void setIdOrganisateur(int idOrganisateur) {
         this.idOrganisateur = idOrganisateur;
@@ -126,8 +126,6 @@ public static List<Organisateur> getAll() throws Exception {
             setNom(resultSet.getString("nom"));
             setPrenom(resultSet.getString("prenom"));
             setAge( resultSet.getInt("age"));
-            setMail( resultSet.getString("mail"));
-            setPassword( resultSet.getString("password"));
         }
         DataAcces.dispose(resultSet, pStatement, connect);
     }
@@ -168,5 +166,11 @@ public static List<Organisateur> getAll() throws Exception {
 /// VALIDATION DE CONNECTION
     public static boolean isOrgaConnected(HttpServletRequest request){
         return request.getSession(true).getAttribute("user_orga") == null;
+    }
+    public static void deconnectOrganisateur(HttpServletRequest request){
+        request.getSession(true).removeAttribute("user_orga");
+    }
+    public void connectOrganisateur(HttpServletRequest request){
+        request.getSession(true).setAttribute("user_orga", this);
     }
 }

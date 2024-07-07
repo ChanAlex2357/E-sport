@@ -63,3 +63,6 @@
     </div>
 </div>
 <%@ include file="../static/footer.html"%>
+<script>
+    activeCurrentPage("jeux-link");
+</script>

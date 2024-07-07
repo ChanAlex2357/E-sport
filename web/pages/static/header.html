@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/main.css">
-    <link rel="stylesheet" href="assets/font/bootstrap-icons.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/font/bootstrap-icons.min.css" />
     <title>Esport Manager</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="fixed-top">
-        <nav class="navbar navbar-dark">
-            <div class="container-fluid">
-                <div class="navbar-brand">
-                    <h1 class="h1 text-uppercase text-succes"> E-sport </h1>
-                </div>
-                <button class="navbar-toggler collapser" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="navbarToggle">
-                    <div class="d-flex flex-column flex-md-row justify-content-center">
-                        <ul class=" navbar-nav flex-row gap-5">
-                            <li class="nav-item">
-                                <a href="jeux" class="nav-link">Jeu</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="joueur" class="nav-link">Joueur</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="equipe" class="nav-link">Equipe</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="tournoi" class="nav-link">Tournoi</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="" class="btn bg-gray-clr text-dark fw-light"> Deconnexion </a>
-                    </div>
-                </div>
+      <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+          <div class="navbar-brand">
+            <h1 class="h1 text-uppercase text-succes">E-sport</h1>
+          </div>
+          <button
+            class="navbar-toggler collapser"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggle"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="d-flex flex-column flex-md-row justify-content-center">
+              <ul class="navbar-nav flex-row gap-5">
+                <li class="nav-item" id="jeux-link">
+                  <a href="jeux" class="nav-link">Jeu</a>
+                </li>
+                <li class="nav-item" id="joueur-link">
+                  <a href="joueur" class="nav-link">Joueur</a>
+                </li>
+                <li class="nav-item" id="equipe-link">
+                  <a href="equipe" class="nav-link">Equipe</a>
+                </li>
+                <li class="nav-item" id="tournoi-link">
+                  <a href="tournoi" class="nav-link">Tournoi</a>
+                </li>
+              </ul>
             </div>
-        </nav>
+            <div>
+              <a href="signout" class="btn bg-gray-clr text-dark fw-light">
+                Deconnexion
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
+  </body>
+</html>

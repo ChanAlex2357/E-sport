@@ -66,3 +66,6 @@
     </div>
 </div>
 <%@ include file="../static/footer.html"%>
+<script>
+    activeCurrentPage("equipe-link");
+</script>

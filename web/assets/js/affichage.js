@@ -16,7 +16,6 @@ function collapseAction(){
                 data.classList.add("collapsing");
                 data.classList.remove("collapsing");
                 data.classList.add("show");
-                console.log("AFFICHER")
             }
             else{
                 element.ariaExpanded = "false";
@@ -24,9 +23,8 @@ function collapseAction(){
                 data.classList.add("collapsing");
                 data.classList.remove("collapsing");
                 data.classList.remove("show");
-                console.log("CACHER");
             }
         });
     };
 }
-window.addEventListener("load" , function(){ collapseAction() ; console.log("collapser")});
+window.addEventListener("load" , function(){ collapseAction() ;});
