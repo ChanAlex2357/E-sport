@@ -1,11 +1,16 @@
 package model;
 
+import java.sql.Date;
+import java.util.List;
+
+
 public class Main {
     public static void main(String[] args) {
         try {
-            Organisateur roga = new Organisateur("jean.dupont@example.com", "password1");
-            // Organisateur roga = new Organisateur(1);
-            System.out.println( roga.fullInfo());
+            List<Tournoi> joueurs = Tournoi.search("",0,"2024-03-09","2024-03-12" );
+            for (Tournoi j : joueurs) {
+                System.out.println(j.idTournoi);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -20,9 +20,15 @@ public class DataAcces {
     }
 
     public static void dispose(ResultSet resultSet , PreparedStatement pStatement , Connection connection) throws SQLException{
-        resultSet.close();
-        pStatement.close();
-        connection.close();
+        if (resultSet != null) {
+            resultSet.close();
+        }
+        if (pStatement != null) {
+            pStatement.close();
+        }
+        if (connection != null) {
+            connection.close();
+        }
     }
     
 }

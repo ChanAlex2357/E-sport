@@ -1,27 +1,17 @@
-Create table Organisateur (
-    idOrganisateur Serial primary key ,
-    nom varchar(50),
-    prenom varchar(50),
-    age integer,
-    mail varchar(50),
-    password varchar(50)
-)
-
-
 CREATE TABLE TypeJeux(
-   idType INTEGER,
+   idType Serial,
    nomType VARCHAR(50)  NOT NULL,
    PRIMARY KEY(idType)
 );
 
 CREATE TABLE CategoryEquipe(
-   idCategory INTEGER,
+   idCategory Serial,
    nomCategory VARCHAR(50)  NOT NULL,
    PRIMARY KEY(idCategory)
 );
 
 CREATE TABLE Jeux(
-   idJeux INTEGER,
+   idJeux Serial ,
    nomJeux VARCHAR(50)  NOT NULL,
    idType INTEGER,
    PRIMARY KEY(idJeux),
@@ -29,9 +19,10 @@ CREATE TABLE Jeux(
 );
 
 CREATE TABLE Tournoi(
-   idTournoi INTEGER,
+   idTournoi Serial,
    nomTournoi VARCHAR(50)  NOT NULL,
    dateTournoi DATE NOT NULL,
+   duree INTEGER NOT NULL,
    lieuTournoi VARCHAR(50)  NOT NULL,
    idJeux INTEGER NOT NULL,
    PRIMARY KEY(idTournoi),
@@ -39,19 +30,20 @@ CREATE TABLE Tournoi(
 );
 
 CREATE TABLE Equipe(
-   idEquipe INTEGER,
+   idEquipe Serial,
    nomEquipe VARCHAR(50)  NOT NULL,
+   initial VARCHAR(50) NOT NULL,
    idCategory INTEGER NOT NULL,
    PRIMARY KEY(idEquipe),
    FOREIGN KEY(idCategory) REFERENCES CategoryEquipe(idCategory)
 );
 
 CREATE TABLE Joueur(
-   idJoueur INTEGER,
+   idJoueur Serial,
    nomJoueur VARCHAR(50)  NOT NULL,
    pseudo VARCHAR(50)  NOT NULL,
    dateNaissance DATE NOT NULL,
-   idEquipe INTEGER NOT NULL,
+   idEquipe INTEGER ,
    PRIMARY KEY(idJoueur),
    FOREIGN KEY(idEquipe) REFERENCES Equipe(idEquipe)
 );
@@ -63,3 +55,4 @@ CREATE TABLE Participation(
    FOREIGN KEY(idJoueur) REFERENCES Joueur(idJoueur),
    FOREIGN KEY(idTournoi) REFERENCES Tournoi(idTournoi)
 );
+

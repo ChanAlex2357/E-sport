@@ -32,7 +32,7 @@
         <url-pattern>/jeux-formulaire</url-pattern>
     </servlet-mapping>
 
-<!-- JEUX - Read -->
+<!-- JEUX  -->
     <servlet> 
         <servlet-name>Jeux</servlet-name>
         <servlet-class>controler.JeuxServlet</servlet-class>
@@ -43,4 +43,70 @@
         <url-pattern>/jeux</url-pattern>
     </servlet-mapping>
 
+<!-- EQUIPE - Formulaire -->
+<servlet> 
+    <servlet-name>EquipeFormulaire</servlet-name>
+    <servlet-class>controler.EquipeFormulaire</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>EquipeFormulaire</servlet-name>
+    <url-pattern>/equipe-formulaire</url-pattern>
+</servlet-mapping>
+
+<!-- EQUIPE -->
+<servlet> 
+    <servlet-name>Equipe</servlet-name>
+    <servlet-class>controler.EquipeServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Equipe</servlet-name>
+    <url-pattern>/equipe</url-pattern>
+</servlet-mapping>
+
+
+<!-- JOUEUR - Formulaire -->
+<servlet> 
+    <servlet-name>JoueurFormulaire</servlet-name>
+    <servlet-class>controler.JoueurFormulaire</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>JoueurFormulaire</servlet-name>
+    <url-pattern>/joueur-formulaire</url-pattern>
+</servlet-mapping>
+
+<!-- JOUEUR -->
+<servlet> 
+    <servlet-name>Joueur</servlet-name>
+    <servlet-class>controler.JoueurServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Joueur</servlet-name>
+    <url-pattern>/joueur</url-pattern>
+</servlet-mapping>
+
+<!-- TOURNOI - Formulaire-->
+<servlet> 
+    <servlet-name>TournoiFormulaire</servlet-name>
+    <servlet-class>controler.TournoiFormulaire</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>TournoiFormulaire</servlet-name>
+    <url-pattern>/tournoi-formulaire</url-pattern>
+</servlet-mapping>
+
+<!-- TOURNOI -->
+<servlet> 
+    <servlet-name>Tournoi</servlet-name>
+    <servlet-class>controler.TournoiServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Tournoi</servlet-name>
+    <url-pattern>/tournoi</url-pattern>
+</servlet-mapping>
 </web-app>
