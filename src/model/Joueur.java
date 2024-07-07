@@ -80,146 +80,146 @@ public class Joueur {
         }
         return eq;
     }
-
-/// sql getteurs
-public void getById(int id) throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    try {
-        pStatement = connection.prepareStatement("select * from v_joueur Where idJoueur = ?");
-    /// Preparation du statement
-        pStatement.setInt(1, getIdJoueur());
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final String nom = rSet.getString("nomJoueur");
-            final String pseudo = rSet.getString("pseudo");
-            final Date naissance = rSet.getDate("dateNaissance");
-            final int idEquipe = rSet.getInt("idEquipe");
-
-            setNomJoueur(nom);
-            setPseudo(pseudo);
-            setDateNaissance(naissance);
-            setIdEquipe(idEquipe);
+/// Statement Methods
+    private static PreparedStatement getStatement( String ref,int idE , int ageMin , int ageMax ,Connection connection) throws SQLException{
+        PreparedStatement pStatement = null;
+        String sql = "select * from v_joueur where (1=1)";
+        if (ref != null) {
+            sql+= "and (nomJoueur like '%"+ref+"%')";
         }
-    } catch (Exception e) {
-        System.out.println("Probleme getById Joueur : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-}
-static public List<Joueur> getAll() throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    List<Joueur> list = new ArrayList<>();
-    try {
-        pStatement = connection.prepareStatement("select * from v_joueur ");
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            
-            final int idJoueur = rSet.getInt("idJoueur");
-            final String nom = rSet.getString("nomJoueur");
-            final String pseudo = rSet.getString("pseudo");
-            final Date naissance = rSet.getDate("dateNaissance");
-            final int idEquipe = rSet.getInt("idEquipe");
-            final int age = rSet.getInt("age");
-
-            Joueur joueur = new Joueur(idJoueur, nom, pseudo, naissance, idEquipe , age);
-            list.add( joueur );
-        }
-    } catch (Exception e) {
-        System.out.println("Probleme getAll Joueur : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-    return list;
-}
-private static PreparedStatement getStatement( String ref,int idE , int ageMin , int ageMax ,Connection connection) throws SQLException{
-    PreparedStatement pStatement = null;
-    String sql = "select * from v_joueur where (1=1)";
-    if (ref != null) {
-        sql+= "and (nomJoueur like '%"+ref+"%')";
-    }
-
-    if (idE > 0) {
-        sql += "and (idEquipe = ?)";
-    }
     
-    if (ageMin > 0) {
-        sql += "and (age >= ?)";
+        if (idE > 0) {
+            sql += "and (idEquipe = ?)";
+        }
+        
+        if (ageMin > 0) {
+            sql += "and (age >= ?)";
+        }
+    
+        if (ageMax > 0) {
+            sql += "and (age <= ?)";
+        }
+        pStatement = connection.prepareStatement(sql);
+        init_statement(ref, idE, ageMin, ageMax, pStatement);
+        System.out.println("sql = "+sql);
+        return pStatement;
     }
+    private static void init_statement(String ref,int idE , int ageMin , int ageMax , PreparedStatement pStatement){
+        int start = 1;
+        if (idE > 0) {
+            System.out.println("set idEquipe to statement "+start);
+            try {
+                pStatement.setInt(start, idE);
+                start++;
+            } catch (Exception e) {}
+        }
+        if (ageMin > 0) {
+            System.out.println("set age min to statement "+start);
+            try {
+                pStatement.setInt(start, ageMin);
+                start ++;
+            } catch (Exception e) {
+            }
+        }
+        if (ageMax > 0) {
+            System.out.println("set age max to statement "+start);
+            try {
+                pStatement.setInt(start, ageMax);
+                start++;
+            }catch(Exception e){
+            }
+        }
+    }
+/// sql getteurs
+    public void getById(int id) throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        try {
+            pStatement = connection.prepareStatement("select * from v_joueur Where idJoueur = ?");
+        /// Preparation du statement
+            pStatement.setInt(1, getIdJoueur());
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                final String nom = rSet.getString("nomJoueur");
+                final String pseudo = rSet.getString("pseudo");
+                final Date naissance = rSet.getDate("dateNaissance");
+                final int idEquipe = rSet.getInt("idEquipe");
 
-    if (ageMax > 0) {
-        sql += "and (age <= ?)";
-    }
-    pStatement = connection.prepareStatement(sql);
-    init_statement(ref, idE, ageMin, ageMax, pStatement);
-    System.out.println("sql = "+sql);
-    return pStatement;
-}
-private static void init_statement(String ref,int idE , int ageMin , int ageMax , PreparedStatement pStatement){
-    int start = 1;
-    if (idE > 0) {
-        System.out.println("set idEquipe to statement "+start);
-        try {
-            pStatement.setInt(start, idE);
-            start++;
-        } catch (Exception e) {}
-    }
-    if (ageMin > 0) {
-        System.out.println("set age min to statement "+start);
-        try {
-            pStatement.setInt(start, ageMin);
-            start ++;
+                setNomJoueur(nom);
+                setPseudo(pseudo);
+                setDateNaissance(naissance);
+                setIdEquipe(idEquipe);
+            }
         } catch (Exception e) {
+            System.out.println("Probleme getById Joueur : ");
+            e.printStackTrace();
+        }
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
         }
     }
-    if (ageMax > 0) {
-        System.out.println("set age max to statement "+start);
+    static public List<Joueur> getAll() throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        List<Joueur> list = new ArrayList<>();
         try {
-            pStatement.setInt(start, ageMax);
-            start++;
-        }catch(Exception e){
-        }
-    }
-}
-static public List<Joueur> search(String ref,int idE , int ageMin , int ageMax) throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    List<Joueur> list = new ArrayList<>();
-    try {
-        pStatement = getStatement(ref, idE, ageMin, ageMax, connection);
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final int idJoueur = rSet.getInt("idJoueur");
-            final String nom = rSet.getString("nomJoueur");
-            final String pseudo = rSet.getString("pseudo");
-            final Date naissance = rSet.getDate("dateNaissance");
-            final int idEquipe = rSet.getInt("idEquipe");
-            final int age = rSet.getInt("age");
+            pStatement = connection.prepareStatement("select * from v_joueur ");
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                
+                final int idJoueur = rSet.getInt("idJoueur");
+                final String nom = rSet.getString("nomJoueur");
+                final String pseudo = rSet.getString("pseudo");
+                final Date naissance = rSet.getDate("dateNaissance");
+                final int idEquipe = rSet.getInt("idEquipe");
+                final int age = rSet.getInt("age");
 
-            Joueur joueur = new Joueur(idJoueur, nom, pseudo, naissance, idEquipe,age);
-            list.add( joueur );
+                Joueur joueur = new Joueur(idJoueur, nom, pseudo, naissance, idEquipe , age);
+                list.add( joueur );
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme getAll Joueur : ");
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        System.out.println("Probleme getAll Joueur : ");
-        e.printStackTrace();
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
+        }
+        return list;
     }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
+    static public List<Joueur> search(String ref,int idE , int ageMin , int ageMax) throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        List<Joueur> list = new ArrayList<>();
+        try {
+            pStatement = getStatement(ref, idE, ageMin, ageMax, connection);
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                final int idJoueur = rSet.getInt("idJoueur");
+                final String nom = rSet.getString("nomJoueur");
+                final String pseudo = rSet.getString("pseudo");
+                final Date naissance = rSet.getDate("dateNaissance");
+                final int idEquipe = rSet.getInt("idEquipe");
+                final int age = rSet.getInt("age");
+
+                Joueur joueur = new Joueur(idJoueur, nom, pseudo, naissance, idEquipe,age);
+                list.add( joueur );
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme getAll Joueur : ");
+            e.printStackTrace();
+        }
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
+        }
+        System.out.println(list.size());
+        return list;
     }
-    System.out.println(list.size());
-    return list;
-}
 /// CRUD
     public void update() throws ClassNotFoundException, SQLException{
         Connection connect = DataAcces.getConnection();

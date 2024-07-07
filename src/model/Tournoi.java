@@ -79,8 +79,8 @@ public void getById(int id) throws SQLException, ClassNotFoundException{
     PreparedStatement pStatement = null;
     ResultSet rSet = null;
     try {
-        pStatement = connection.prepareStatement("select * from Tournoi Where idTournoi = ?");
     /// Preparation du statement
+        pStatement = connection.prepareStatement("select * from Tournoi Where idTournoi = ?");
         pStatement.setInt(1, getIdTournoi());
     /// Traitement du resultat
         rSet = pStatement.executeQuery();

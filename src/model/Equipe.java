@@ -59,98 +59,98 @@ public class Equipe {
     }
 
 /// sql getteurs
-public void getById(int id) throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    try {
-        pStatement = connection.prepareStatement("select * from Equipe Where idEquipe = ? ");
-    /// Preparation du statement
-        pStatement.setInt(1, getIdEquipe());
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final String nom = rSet.getString("nomEquipe");
-            final String initial = rSet.getString("initial");
-            final int idCategory = rSet.getInt("idCategory");
-            
-            setNomEquipe( nom);
-            setInitial(initial);
-            setIdCategory(idCategory);
-        }
-    } catch (Exception e) {
-        System.out.println("Probleme getById Equipe : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-}
-static public List<Equipe> getAll() throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    List<Equipe> list = new ArrayList<>();
-    try {
-        pStatement = connection.prepareStatement("select * from Equipe Order by idEquipe");
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final int id = rSet.getInt("idEquipe");
-            final String nom = rSet.getString("nomEquipe");
-            final String initial = rSet.getString("initial");
-            final int idCategory = rSet.getInt("idCategory");
-            
-            final Equipe equipe = new Equipe(id, nom, initial, idCategory);
-            list.add( equipe );
-        }
-    } catch (Exception e) {
-        System.out.println("Probleme getAll Equipe : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-    return list;
-}
-static public List<Equipe> search(String ref , int idCat) throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    List<Equipe> list = new ArrayList<>();
-    String query = "select * from Equipe Where (1=1) ";
-    if (ref != null) {
-        query += "and (nomEquipe like '%"+ref+"%')";
-    }
-    if ( idCat > 0) {
-        query += "and (idCategory = ?)";
-    }
-    try {
-        pStatement = connection.prepareStatement(query+" Order by idEquipe");
+    public void getById(int id) throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
         try {
-            pStatement.setInt(1, idCat);
+            pStatement = connection.prepareStatement("select * from Equipe Where idEquipe = ? ");
+        /// Preparation du statement
+            pStatement.setInt(1, getIdEquipe());
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                final String nom = rSet.getString("nomEquipe");
+                final String initial = rSet.getString("initial");
+                final int idCategory = rSet.getInt("idCategory");
+                
+                setNomEquipe( nom);
+                setInitial(initial);
+                setIdCategory(idCategory);
+            }
         } catch (Exception e) {
+            System.out.println("Probleme getById Equipe : ");
+            e.printStackTrace();
         }
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final int id = rSet.getInt("idEquipe");
-            final String nom = rSet.getString("nomEquipe");
-            final String initial = rSet.getString("initial");
-            final int idCategory = rSet.getInt("idCategory");
-            
-            final Equipe equipe = new Equipe(id, nom, initial, idCategory);
-            list.add( equipe );
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
         }
-    } catch (Exception e) {
-        System.out.println("Probleme Search Equipe : ");
-        e.printStackTrace();
     }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
+    static public List<Equipe> getAll() throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        List<Equipe> list = new ArrayList<>();
+        try {
+            pStatement = connection.prepareStatement("select * from Equipe Order by idEquipe");
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                final int id = rSet.getInt("idEquipe");
+                final String nom = rSet.getString("nomEquipe");
+                final String initial = rSet.getString("initial");
+                final int idCategory = rSet.getInt("idCategory");
+                
+                final Equipe equipe = new Equipe(id, nom, initial, idCategory);
+                list.add( equipe );
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme getAll Equipe : ");
+            e.printStackTrace();
+        }
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
+        }
+        return list;
     }
-    return list;
-}
+    static public List<Equipe> search(String ref , int idCat) throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        List<Equipe> list = new ArrayList<>();
+        String query = "select * from Equipe Where (1=1) ";
+        if (ref != null) {
+            query += "and (nomEquipe like '%"+ref+"%')";
+        }
+        if ( idCat > 0) {
+            query += "and (idCategory = ?)";
+        }
+        try {
+            pStatement = connection.prepareStatement(query+" Order by idEquipe");
+            try {
+                pStatement.setInt(1, idCat);
+            } catch (Exception e) {
+            }
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                final int id = rSet.getInt("idEquipe");
+                final String nom = rSet.getString("nomEquipe");
+                final String initial = rSet.getString("initial");
+                final int idCategory = rSet.getInt("idCategory");
+                
+                final Equipe equipe = new Equipe(id, nom, initial, idCategory);
+                list.add( equipe );
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme Search Equipe : ");
+            e.printStackTrace();
+        }
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
+        }
+        return list;
+    }
 /// CRUD
     public void update() throws ClassNotFoundException, SQLException{
         Connection connect = DataAcces.getConnection();
