@@ -9,11 +9,16 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Jeux;
+import model.Organisateur;
 import model.TypeJeux;
 
 public class JeuxServlet extends HomeServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (Organisateur.isOrgaConnected(req)) {
+            resp.sendRedirect("login");
+            return;
+        }
         List<TypeJeux> typeJeux = null;
         List<Jeux> jeux = null;
     /// Traitement des actions

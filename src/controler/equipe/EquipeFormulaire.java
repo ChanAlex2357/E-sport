@@ -10,10 +10,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.CategoryEquipe;
 import model.Equipe;
+import model.Organisateur;
 
 public class EquipeFormulaire extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (Organisateur.isOrgaConnected(req)) {
+            resp.sendRedirect("login");
+            return;
+        }
         List<CategoryEquipe> cat = null;
         String action = req.getParameter("action");
     /// Traitement Update

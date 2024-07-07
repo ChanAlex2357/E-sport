@@ -9,11 +9,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Jeux;
+import model.Organisateur;
 import model.Tournoi;
 
 public class TournoiFormulaire extends HttpServlet {
         @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (Organisateur.isOrgaConnected(req)) {
+            resp.sendRedirect("login");
+            return;
+        }
+        
         List<Jeux> jeux = null;
         String action = req.getParameter("action");
     /// Traitement Update

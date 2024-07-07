@@ -9,10 +9,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Jeux;
+import model.Organisateur;
 import model.TypeJeux;
 public class JeuxFormulaire extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (Organisateur.isOrgaConnected(req)) {
+            resp.sendRedirect("login");
+            return;
+        }
         List<TypeJeux> typeJeux = null;
         String action = req.getParameter("action");
     /// Traitement Update
@@ -31,7 +36,6 @@ public class JeuxFormulaire extends HttpServlet{
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     /// Rediriger vers le formulaire
         req.setAttribute("listTypeJeux", typeJeux);
         req.getRequestDispatcher("pages/jeux/jeux-formulaire.jsp").forward(req, resp);

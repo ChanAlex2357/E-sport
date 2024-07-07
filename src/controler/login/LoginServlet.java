@@ -21,16 +21,15 @@ public class LoginServlet extends HttpServlet{
         String redirection = "login";
         try {
             Organisateur orga = new Organisateur(mail, pass);
-            if (orga.getIdOrganisateur() != 0) {
+            if (orga.getIdOrganisateur() <= 0) {
                 redirection = "home";
             }
             HttpSession session = req.getSession(true);
-            session.setAttribute("organisateur", orga);
+            session.setAttribute("user_orga", orga);
         }
         catch (Exception err) {
             resp.getWriter().println("erorr ");    
         }
-        resp.getWriter().println(redirection);
         resp.sendRedirect(redirection);
     }
 }
