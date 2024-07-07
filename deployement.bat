@@ -9,7 +9,7 @@ set work_dir=.
 rem Le chemin de deployement final
 set webapps=E:\Softwares\Tomcat 10\webapps
 
-set bin = %work_dir%\bin
+set bin = %work_dir%\bin 
 rem Le dossier de configuration du web xml
 set web_xml=%work_dir%\web.xml
 
