@@ -1,4 +1,4 @@
-package controler;
+package controler.login;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
