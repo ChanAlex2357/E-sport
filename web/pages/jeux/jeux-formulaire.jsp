@@ -16,7 +16,7 @@
         idType = toUpdate.getIdType();
         out.println(idType);
         action = "update"; 
-        validation =  "Modifier Jeu"
+        validation =  "Modifier Jeu";
     }
 %>
 <div id="hero py-5">

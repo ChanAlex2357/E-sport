@@ -9,9 +9,9 @@
     String validation = "Nouveau Joueur";
 
     String action = "create";
-    String nom = "Chan Alex";
+    String nom = "";
     Date date = null;
-    String pseudo = "JCA";
+    String pseudo = "";
     int idEquipe = -1;
 
     if( toUpdate != null){

@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 d-none d-lg-block">
-                <img src="assets/images/select_player.svg" alt="" class="img-fluid">
+                <img src="assets/images/undraw_team_re_0bfe.svg" alt="" class="img-fluid">
             </div>
         </div>
     </div>

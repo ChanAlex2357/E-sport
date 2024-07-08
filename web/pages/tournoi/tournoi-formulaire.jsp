@@ -29,6 +29,7 @@
 <div id="hero py-5">
     <div class="container mt-5">
         <div class="row py-5">
+            <!-- FORM CONTAINER -->
             <div class="col-12 col-lg-6">
                 <div class="mx-auto">
                     <form action="tournoi?action=<%=action%>" method="post" class="">
@@ -44,11 +45,11 @@
                         <div class="row">
                             <div class="col-12 col-lg-6 form-group mb-3">
                                 <label for="dateInput" class="form-label">Date</label>
-                                <input type="date" name="date" id="dateInput" required value="<%=date%>">
+                                <input type="date" name="date" class="form-control" id="dateInput" required value="<%=date%>">
                             </div>
                             <div class="col-12 col-lg-6 form-group mb-3">
                                 <label for="dureeInput" class="form-label">Duree (en jour)</label>
-                                <input type="number" name="duree" min="1" id="dureeInput" required value="<%=duree%>">
+                                <input type="number" name="duree" min="1" id="dureeInput" class="form-control" required value="<%=duree%>">
                             </div>
                         </div>
                         <div class="form-group mb-3">
@@ -76,8 +77,9 @@
                     </form>
                 </div>
             </div>
+            <!-- ILLUSTRATION -->
             <div class="col-12 col-lg-6 d-none d-lg-block">
-                <img src="../assets/images/video_game_night.svg" alt="" class="img-fluid">
+                <img src="assets/images/select_player.svg" alt="" class="img-fluid">
             </div>
         </div>
     </div>
