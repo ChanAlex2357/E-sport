@@ -32,50 +32,49 @@ public class CategoryEquipe {
         this.nomCategory = nomCategory;
     }
 /// sql getteurs
-public void getById(int id) throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    try {
-        pStatement = connection.prepareStatement("select * from CategoryEquipe Where idCategory = ?");
-    /// Preparation du statement
-        pStatement.setInt(1, getIdCategory());
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ){
-            setNomCategory(rSet.getString("nomCategory"));
+    public void getById(int id) throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        try {
+            pStatement = connection.prepareStatement("select * from CategoryEquipe Where idCategory = ?");
+        /// Preparation du statement
+            pStatement.setInt(1, getIdCategory());
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ){
+                setNomCategory(rSet.getString("nomCategory"));
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme getById CategoryEquipe : ");
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        System.out.println("Probleme getById CategoryEquipe : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-}
-static public List<CategoryEquipe> getAll() throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    List<CategoryEquipe> list = new ArrayList<>();
-    try {
-        pStatement = connection.prepareStatement("select * from CategoryEquipe ");
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final int id = rSet.getInt("idCategory");
-            final String nom = rSet.getString( "nomCategory");
-            final CategoryEquipe cat = new CategoryEquipe(id, nom);
-            list.add( cat );
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
         }
-    } catch (Exception e) {
-        System.out.println("Probleme getAll CategoryEquipe : ");
-        e.printStackTrace();
     }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
+    static public List<CategoryEquipe> getAll() throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        List<CategoryEquipe> list = new ArrayList<>();
+        try {
+            pStatement = connection.prepareStatement("select * from CategoryEquipe ");
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                final int id = rSet.getInt("idCategory");
+                final String nom = rSet.getString( "nomCategory");
+                final CategoryEquipe cat = new CategoryEquipe(id, nom);
+                list.add( cat );
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme getAll CategoryEquipe : ");
+            e.printStackTrace();
+        }
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
+        }
+        return list;
     }
-    return list;
-}
-
 }

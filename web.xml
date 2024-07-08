@@ -1,0 +1,111 @@
+<web-app>
+<!-- Login -->
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>controler.login.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+<!-- Sign Out -->
+    <servlet>
+        <servlet-name>SignOut</servlet-name>
+        <servlet-class>controler.login.SignOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignOut</servlet-name>
+        <url-pattern>/signout</url-pattern>
+    </servlet-mapping>
+
+<!-- Home -->
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>controler.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+<!-- JEUX - Formulaire -->
+    <servlet> 
+        <servlet-name>JeuxFormulaire</servlet-name>
+        <servlet-class>controler.jeux.JeuxFormulaire</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JeuxFormulaire</servlet-name>
+        <url-pattern>/jeux-formulaire</url-pattern>
+    </servlet-mapping>
+
+<!-- JEUX  -->
+    <servlet> 
+        <servlet-name>Jeux</servlet-name>
+        <servlet-class>controler.jeux.JeuxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jeux</servlet-name>
+        <url-pattern>/jeux</url-pattern>
+    </servlet-mapping>
+
+<!-- EQUIPE - Formulaire -->
+<servlet> 
+    <servlet-name>EquipeFormulaire</servlet-name>
+    <servlet-class>controler.equipe.EquipeFormulaire</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>EquipeFormulaire</servlet-name>
+    <url-pattern>/equipe-formulaire</url-pattern>
+</servlet-mapping>
+
+<!-- EQUIPE -->
+<servlet> 
+    <servlet-name>Equipe</servlet-name>
+    <servlet-class>controler.equipe.EquipeServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Equipe</servlet-name>
+    <url-pattern>/equipe</url-pattern>
+</servlet-mapping>
+
+<!-- JOUEUR - Formulaire -->
+<servlet> 
+    <servlet-name>JoueurFormulaire</servlet-name>
+    <servlet-class>controler.joueur.JoueurFormulaire</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>JoueurFormulaire</servlet-name>
+    <url-pattern>/joueur-formulaire</url-pattern>
+</servlet-mapping>
+
+<!-- JOUEUR -->
+<servlet> 
+    <servlet-name>Joueur</servlet-name>
+    <servlet-class>controler.joueur.JoueurServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Joueur</servlet-name>
+    <url-pattern>/joueur</url-pattern>
+</servlet-mapping>
+
+<!-- TOURNOI - Formulaire-->
+<servlet> 
+    <servlet-name>TournoiFormulaire</servlet-name>
+    <servlet-class>controler.tournoi.TournoiFormulaire</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>TournoiFormulaire</servlet-name>
+    <url-pattern>/tournoi-formulaire</url-pattern>
+</servlet-mapping>
+
+<!-- TOURNOI -->
+<servlet> 
+    <servlet-name>Tournoi</servlet-name>
+    <servlet-class>controler.tournoi.TournoiServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Tournoi</servlet-name>
+    <url-pattern>/tournoi</url-pattern>
+</servlet-mapping>
+</web-app>

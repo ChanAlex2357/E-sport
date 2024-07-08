@@ -49,61 +49,36 @@ public class Jeux {
         }
         return type;
     }
-public void getById(int id) throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    try {
-        pStatement = connection.prepareStatement("select * from Jeux Where idJeux = ? ");
-    /// Preparation du statement
-        pStatement.setInt(1, getIdJeux());
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            setNomJeux( rSet.getString("nomJeux"));
-            setIdType( rSet.getInt("idType"));
-        }
-    } catch (Exception e) {
-        System.out.println("Probleme getById Jeux : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-}
-static public List<Jeux> getAll() throws SQLException, ClassNotFoundException{
-    Connection connection = DataAcces.getConnection();
-    PreparedStatement pStatement = null;
-    ResultSet rSet = null;
-    List<Jeux> list = new ArrayList<>();
-    try {
-        pStatement = connection.prepareStatement("select * from Jeux order by idJeux ");
-    /// Traitement du resultat
-        rSet = pStatement.executeQuery();
-        while ( rSet.next() ) {
-            final int id = rSet.getInt("idJeux");
-            final String nom = rSet.getString("nomJeux"); 
-            final int typeJeux = rSet.getInt("idType");
-            final Jeux jeux = new Jeux(id, nom, typeJeux);
-            list.add(jeux);
-        }
-    } catch (Exception e) {
-        System.out.println("Probleme getAll Jeux : ");
-        e.printStackTrace();
-    }
-    finally{
-        DataAcces.dispose(rSet, pStatement, connection);
-    }
-    return list;
-}
-    static public List<Jeux> getByTypeJeux(int idType) throws ClassNotFoundException, SQLException{
-        List<Jeux> list = new ArrayList<>() ;
-        Connection connect = DataAcces.getConnection();
-        ResultSet rSet = null;
+    public void getById(int id) throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
         PreparedStatement pStatement = null;
+        ResultSet rSet = null;
         try {
-            pStatement = connect.prepareStatement("Select * from Jeux Where idType = ? order by idJeux ");
-            pStatement.setInt(1, idType);
+            pStatement = connection.prepareStatement("select * from Jeux Where idJeux = ? ");
+        /// Preparation du statement
+            pStatement.setInt(1, getIdJeux());
+        /// Traitement du resultat
+            rSet = pStatement.executeQuery();
+            while ( rSet.next() ) {
+                setNomJeux( rSet.getString("nomJeux"));
+                setIdType( rSet.getInt("idType"));
+            }
+        } catch (Exception e) {
+            System.out.println("Probleme getById Jeux : ");
+            e.printStackTrace();
+        }
+        finally{
+            DataAcces.dispose(rSet, pStatement, connection);
+        }
+    }
+    static public List<Jeux> getAll() throws SQLException, ClassNotFoundException{
+        Connection connection = DataAcces.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet rSet = null;
+        List<Jeux> list = new ArrayList<>();
+        try {
+            pStatement = connection.prepareStatement("select * from Jeux order by idJeux ");
+        /// Traitement du resultat
             rSet = pStatement.executeQuery();
             while ( rSet.next() ) {
                 final int id = rSet.getInt("idJeux");
@@ -117,18 +92,18 @@ static public List<Jeux> getAll() throws SQLException, ClassNotFoundException{
             e.printStackTrace();
         }
         finally{
-            DataAcces.dispose(rSet, pStatement, connect);
+            DataAcces.dispose(rSet, pStatement, connection);
         }
         return list;
     }
-    static public List<Jeux> getByNom(String nomLike) throws ClassNotFoundException, SQLException{
+    static public List<Jeux> getByTypeJeux(int idType) throws ClassNotFoundException, SQLException{
         List<Jeux> list = new ArrayList<>() ;
         Connection connect = DataAcces.getConnection();
         ResultSet rSet = null;
         PreparedStatement pStatement = null;
         try {
-            pStatement = connect.prepareStatement("Select * from Jeux Where nomJeux like '%"+nomLike+"%'");
-            
+            pStatement = connect.prepareStatement("Select * from Jeux Where idType = ? order by idJeux ");
+            pStatement.setInt(1, idType);
             rSet = pStatement.executeQuery();
             while ( rSet.next() ) {
                 final int id = rSet.getInt("idJeux");

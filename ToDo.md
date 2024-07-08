@@ -13,7 +13,7 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
 - donnee (SQL)
 - Integraton (SERVLET)
 
-### Login
+## Login
 
 - affichage (VIEW)
   - [x]formulaire ( mail , password )
@@ -27,7 +27,7 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
       - [x] redirection pageD'acueil
       - [x] sinon redirection login.html
 
-### index
+## index
 
 - affichage (VIEW)
   - [x] index.html
@@ -37,7 +37,7 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
 - donnee (SQL)
 - Integraton (SERVLET)
 
-### jeux
+## jeux
 
 - [x] affichage (VIEW)
   - [x] formulaire-jeux.html
