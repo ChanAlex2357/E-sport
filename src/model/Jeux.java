@@ -102,31 +102,6 @@ public class Jeux {
         }
         return list;
     }
-    static public List<Jeux> getByTypeJeux(int idType) throws ClassNotFoundException, SQLException{
-        List<Jeux> list = new ArrayList<>() ;
-        Connection connect = DataAcces.getConnection();
-        ResultSet rSet = null;
-        PreparedStatement pStatement = null;
-        try {
-            pStatement = connect.prepareStatement("Select * from Jeux Where idType = ? order by idJeux ");
-            pStatement.setInt(1, idType);
-            rSet = pStatement.executeQuery();
-            while ( rSet.next() ) {
-                final int id = rSet.getInt("idJeux");
-                final String nom = rSet.getString("nomJeux"); 
-                final int typeJeux = rSet.getInt("idType");
-                final Jeux jeux = new Jeux(id, nom, typeJeux);
-                list.add(jeux);
-            }
-        } catch (Exception e) {
-            System.out.println("Probleme getAll Jeux : ");
-            e.printStackTrace();
-        }
-        finally{
-            DataAcces.dispose(rSet, pStatement, connect);
-        }
-        return list;
-    }
     static public List<Jeux> search(String nomLike , int typeJeux) throws ClassNotFoundException, SQLException{
         List<Jeux> list = new ArrayList<>() ;
         Connection connect = DataAcces.getConnection();
@@ -162,7 +137,6 @@ public class Jeux {
         finally{
             DataAcces.dispose(rSet, pStatement, connect);
         }
-    
         return list;
     }
 /// CRUD

@@ -230,11 +230,12 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
 ## Participation
 
 - [ ] affichage (VIEW)
-  - [ ] 
   - [ ] boutton de participation
   - [ ] participation-formulaire
-  - [ ] liste des tournois
     - [ ] champs(idJoueur)
+  - [ ] liste des tournois recuperer par Ajax
+    - [ ] un boutton pour participer
+    - [ ] se en boutton annuler apres participation
 - [ ] fonction (MODEL)
   - [ ] CRUD
     - [ ] save
@@ -245,3 +246,6 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
     - [ ] par tournoi
     - [ ] par status
 - [ ] integration (SERVLET)
+  - [ ] TournoiServlet
+    - [ ] recuperation idJoueur,idTournoi
+    - [ ] savegarder la participation

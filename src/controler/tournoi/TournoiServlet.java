@@ -37,15 +37,12 @@ public class TournoiServlet extends HttpServlet{
                 e.printStackTrace();
             }
         }
-    ///
-        try {
-            jeux = Jeux.getAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    /// La liste des tournois avec filtre
         try {
             if (
-                (filtre != null) && (filtre.equals("search"))
+                (filtre != null) 
+                && 
+                (filtre.equals("search"))
             ) {
                 String ref = req.getParameter("nom");
                 String dateMin = null;
@@ -68,6 +65,12 @@ public class TournoiServlet extends HttpServlet{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    /// La liste des jeux
+    try {
+        jeux = Jeux.getAll();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     /// 
         req.setAttribute("listJeux", jeux);
         req.setAttribute("listTournois", tournois);
@@ -84,26 +87,28 @@ public class TournoiServlet extends HttpServlet{
         int idJeux ;
 
         String action = req.getParameter("action");
-    /// Recuperation des valeurs en input
-        nom = req.getParameter("nomTournoi");
-        date = Date.valueOf( req.getParameter("date"));
-        duree = Integer.parseInt(req.getParameter("duree"));
-        lieu = req.getParameter("lieu");
-        idJeux = Integer.parseInt(req.getParameter("idJeux"));
-        Tournoi t  = new Tournoi(id, nom, date, duree, lieu, idJeux);
         try {
+            /// Taitement de participation
+            /// Recuperation des valeurs en input
+            nom = req.getParameter("nomTournoi");
+            date = Date.valueOf( req.getParameter("date"));
+            duree = Integer.parseInt(req.getParameter("duree"));
+            lieu = req.getParameter("lieu");
+            idJeux = Integer.parseInt(req.getParameter("idJeux"));
+            Tournoi t  = new Tournoi(id, nom, date, duree, lieu, idJeux);
+            /// Modification
             if ((action != null) && (action.equals("update"))) {
                 id = Integer.parseInt(req.getParameter("id"));
                 t.setIdTournoi(id);
                 t.update();
             }
+            /// Creation 
             else if ((action != null) && (action.equals("create"))) {
                 resp.getWriter().println(action);
                 t.save();
             }
             resp.sendRedirect("tournoi");
         } catch (ClassNotFoundException | SQLException e) {
-            resp.getWriter().println("probleme");
             e.printStackTrace(resp.getWriter());
         }
     }
