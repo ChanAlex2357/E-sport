@@ -48,11 +48,19 @@ CREATE TABLE Joueur(
    FOREIGN KEY(idEquipe) REFERENCES Equipe(idEquipe)
 );
 
-CREATE TABLE Participation(
+
+CREATE TABLE ParticipationState (
+   idState Serial PRIMARY KEY ,
+   state VARCHAR(50)
+);
+CREATE TABLE Participation (
+   idParticipation SERIAL PRIMARY KEY,
    idJoueur INTEGER,
    idTournoi INTEGER,
-   PRIMARY KEY(idJoueur, idTournoi),
+   idState INTEGER,
    FOREIGN KEY(idJoueur) REFERENCES Joueur(idJoueur),
-   FOREIGN KEY(idTournoi) REFERENCES Tournoi(idTournoi)
+   FOREIGN KEY(idTournoi) REFERENCES Tournoi(idTournoi),
+   FOREIGN KEY(idState) REFERENCES ParticipationState(idState)
 );
+ALTER TABLE Participation add UNIQUE (idJoueur,idTournoi);
 

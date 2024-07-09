@@ -170,38 +170,38 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
     - [x] save
     - [x] delete
     - [x] update
-    - Filtre
-      - getByAge ( min , max)
-        - Exeption <> min > max
-      - getByEquipe( idEquipe )
-- donnee (SQL)
-  - ChatGpt existe
-- Integraton (SERVLET)
-  - JoueurFormulaire
-    - doGet
-      - recuperer la liste des equipes
-        - Equipe.getAll
-      - dispatch => joueur-formulaire
-  - JoueurServlet
-    - doGet
-      - recuperer la liste des equipes
-        - Equipe.getAll
-      - action = read
-        - Joueur.getAll
-      - action = delete
-        - Joueur.delete
-      - filtre = age.min-max
-        - Joueur.getByAge(ageMin , ageMax)
-      - filtre = idEquipe
-        - Joueur.getByEquipe(idEquipe)
-      - filtre = age.min-max , idEquipe
-        - Joueur.getByAgeEquipe( min , max , idE)
-    - doPost
-      - recuperer les valeurs des champs => new Joueur()
-      - action = create
-        - Joueur.save
-      - action = update
-        - Joueur.update
+    - [x] Filtre
+      - [x] getByAge ( min , max)
+        - [x] Exeption <> min > max
+      - [x] getByEquipe( idEquipe )
+- [x] donnee (SQL)
+  - [x] ChatGpt existe
+- [x] Integraton (SERVLET)
+  - [x] JoueurFormulaire
+    - [x] doGet
+      - [x] recuperer la liste des equipes
+        - [x] Equipe.getAll
+      - [x] dispatch => joueur-formulaire
+  - [x] JoueurServlet
+    - [x] doGet
+      - [x] recuperer la liste des equipes
+        - [x] Equipe.getAll
+      - [x] action = read
+        - [x] Joueur.getAll
+      - [x] action = delete
+        - [x] Joueur.delete
+      - [x] filtre = age.min-max
+        - [x] Joueur.getByAge(ageMin , ageMax)
+      - [x] filtre = idEquipe
+        - [x] Joueur.getByEquipe(idEquipe)
+      - [x] filtre = age.min-max , idEquipe
+        - [x] Joueur.getByAgeEquipe( min , max , idE)
+    - [x] doPost
+      - [x] recuperer les valeurs des champs => new Joueur()
+      - [x] action = create
+        - [x] Joueur.save
+      - [x] action = update
+        - [x] Joueur.update
 
 ## Tournoi
 
@@ -221,8 +221,27 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
   - [x] save
   - [x] delete
   - [x] update
-  - Filtre
-    - getByDate (min , max)
-    - getByJeux
-- donnee (SQL)
-- Integraton (SERVLET)
+  - [x] Filtre
+    - [x] getByDate (min , max)
+    - [x] getByJeux
+- [x] donnee (SQL)
+- [x] Integraton (SERVLET)
+
+## Participation
+
+- [ ] affichage (VIEW)
+  - [ ] 
+  - [ ] boutton de participation
+  - [ ] participation-formulaire
+  - [ ] liste des tournois
+    - [ ] champs(idJoueur)
+- [ ] fonction (MODEL)
+  - [ ] CRUD
+    - [ ] save
+    - [ ] update
+    - [ ] getAll
+  - [ ] flltre
+    - [ ] par joueur
+    - [ ] par tournoi
+    - [ ] par status
+- [ ] integration (SERVLET)
