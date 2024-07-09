@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jeux {
-    int idJeux;
-    String nomJeux;
-    int idType;
+    private int idJeux;
+    private String nomJeux;
+    private int idType;
+    private TypeJeux typeJeux;
     public Jeux(int idJeux, String nomJeux, int idType) {
         setIdJeux( idJeux);
         setNomJeux( nomJeux);
@@ -40,14 +41,19 @@ public class Jeux {
         this.idType = idType;
     }
 
-    public TypeJeux getTypeJeux(){
-        TypeJeux type = null;
+    public TypeJeux getTypeJeux() {
+        if (this.typeJeux != null) {
+            return this.typeJeux;
+        }
         try {
-            type = new TypeJeux(getIdType());
+            setTypeJeux(new TypeJeux(getIdType()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return type;
+        return this.typeJeux;
+    }
+    private void setTypeJeux(TypeJeux typeJeux) {
+        this.typeJeux = typeJeux;
     }
     public void getById(int id) throws SQLException, ClassNotFoundException{
         Connection connection = DataAcces.getConnection();

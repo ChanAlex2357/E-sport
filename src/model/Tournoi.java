@@ -15,6 +15,7 @@ public class Tournoi {
     int duree;
     String lieuTournoi;
     int idJeux;
+    private Jeux jeux;
     public Tournoi(int id , String nom , Date date , int duree , String lieu , int idJeux) {
         setIdTournoi(id);
         setNomTournoi(nom);
@@ -64,13 +65,18 @@ public class Tournoi {
         this.idJeux = idJeux;
     }
     public Jeux getJeux(){
-        Jeux j = null;  
+        if (this.jeux != null) {
+            return this.jeux;
+        }
         try {
-            j = new Jeux(getIdJeux());
+            setJeux(new Jeux(getIdJeux()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return j;
+        return this.jeux;
+    }
+    private void setJeux(Jeux jeux){
+        this.jeux = jeux;
     }
 
 /// sql getteurs

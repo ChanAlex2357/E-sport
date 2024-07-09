@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Equipe {
-    int idEquipe;
-    String nomEquipe;
-    String initial;
-    int idCategory;
+    private int idEquipe;
+    private String nomEquipe;
+    private String initial;
+    private int idCategory;
+    private CategoryEquipe categoryEquipe;
     public Equipe(int id , String nom, String initial , int idCategory){
         setIdEquipe(id);
         setNomEquipe(nom);
@@ -49,13 +50,18 @@ public class Equipe {
         this.idCategory = idCategory;
     }
     public CategoryEquipe getCategoryEquipe(){
-        CategoryEquipe cat = null;
+        if (this.categoryEquipe != null) {
+            return this.categoryEquipe;
+        }
         try {
-            cat = new CategoryEquipe( getIdCategory() );            
+            setCategoryEquipe( new CategoryEquipe( getIdCategory() ));            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cat;
+        return this.categoryEquipe;
+    }
+    private void setCategoryEquipe(CategoryEquipe categoryEquipe){
+        this.categoryEquipe  = categoryEquipe;
     }
 
 /// sql getteurs

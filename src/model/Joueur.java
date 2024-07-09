@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Joueur {
-    int idJoueur;
-    String nomJoueur;
-    String pseudo;
-    Date dateNaissance;
-    int idEquipe;
-    int age;
+    private int idJoueur;
+    private String nomJoueur;
+    private String pseudo;
+    private Date dateNaissance;
+    private int idEquipe;
+    private int age;
+    private Equipe equipe;
     public Joueur(int idJoueur, String nomJoueur, String pseudo, Date dateNaissance, int idEquipe ) {
         setIdJoueur(idJoueur);
         setPseudo(pseudo);
@@ -72,13 +73,18 @@ public class Joueur {
     }
 
     public Equipe getEquipe(){
-        Equipe eq = null;
+        if (this.equipe != null) {
+            return this.equipe;
+        }
         try {
-            eq = new Equipe(getIdEquipe());
+            setEquipe(new Equipe(getIdEquipe()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return eq;
+        return this.equipe;
+    }
+    private void setEquipe(Equipe equipe){
+        this.equipe = equipe;
     }
 /// Statement Methods
     private static PreparedStatement getStatement( String ref,int idE , int ageMin , int ageMax ,Connection connection) throws SQLException{
