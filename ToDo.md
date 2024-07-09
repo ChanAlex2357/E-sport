@@ -236,15 +236,14 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
   - [ ] liste des tournois recuperer par Ajax
     - [ ] un boutton pour participer
     - [ ] se en boutton annuler apres participation
-- [ ] fonction (MODEL)
-  - [ ] CRUD
-    - [ ] save
-    - [ ] update
-    - [ ] getAll
-  - [ ] flltre
+- [x] fonction (MODEL)
+  - [x] CRUD
+    - [x] save
+    - [x] update
+  <!-- - [ ] flltre
     - [ ] par joueur
     - [ ] par tournoi
-    - [ ] par status
+    - [ ] par status -->
 - [ ] integration (SERVLET)
   - [ ] TournoiServlet
     - [ ] recuperation idJoueur,idTournoi

@@ -20,6 +20,15 @@ VALUES
     (1, 'Amateur'),
     (2, 'Semi-Pro'),
     (3, 'Pro');
+
+-- Participation state
+INSERT INTO ParticipationState (state) values
+('registred'),
+('unregistred');
+
+CREATE OR REPLACE VIEW v_participation as
+select Participation.* , ParticipationState.state from Participation join ParticipationState on Participation.idState = ParticipationState.idState;
+
 CREATE OR REPLACE FUNCTION calculer_age(date_naissance date)
 RETURNS integer AS $$
 DECLARE
