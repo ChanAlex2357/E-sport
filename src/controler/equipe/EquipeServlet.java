@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.CategoryEquipe;
 import model.Equipe;
-import model.Organisateur;
 
 public class EquipeServlet extends HttpServlet {
     @Override

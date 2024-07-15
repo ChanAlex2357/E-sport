@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Equipe;
 import model.Joueur;
-import model.Organisateur;
 
 public class JoueurFormulaire extends HttpServlet {
     @Override

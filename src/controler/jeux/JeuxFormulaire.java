@@ -10,7 +10,6 @@ import helpers.SessionChecker;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Jeux;
-import model.Organisateur;
 import model.TypeJeux;
 public class JeuxFormulaire extends HttpServlet{
     @Override

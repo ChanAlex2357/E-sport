@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import helpers.DataAcces;
-import jakarta.servlet.http.HttpServletRequest;
 
 public class Organisateur {
     int idOrganisateur = -1;
