@@ -151,6 +151,7 @@ static public List<Tournoi> getAll() throws SQLException, ClassNotFoundException
     }
     return list;
 }
+
 private static PreparedStatement getStatement( String nom,int idJeux , String debut , String fin ,Connection connection) throws SQLException{
     PreparedStatement pStatement = null;
     String sql = "select * from Tournoi where (1=1) ";

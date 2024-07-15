@@ -118,4 +118,14 @@
     <servlet-name>Tournoi</servlet-name>
     <url-pattern>/tournoi</url-pattern>
 </servlet-mapping>
+
+<!-- PARTICIPATION -->
+<servlet> 
+    <servlet-name>Participation</servlet-name>
+    <servlet-class>controler.tournoi.ParticipationServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Participation</servlet-name>
+    <url-pattern>/participation</url-pattern>
+</servlet-mapping>
 </web-app>

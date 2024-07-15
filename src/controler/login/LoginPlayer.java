@@ -12,6 +12,10 @@ import model.Joueur;
 public class LoginPlayer extends HttpServlet {
         @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (SessionChecker.isOrgaConnected(req)) {
+            resp.sendRedirect("login");
+            return;
+        }
         String dispatchPath = "pages/login/login-player.jsp";
         req.getRequestDispatcher(dispatchPath).forward(req, resp);
     }

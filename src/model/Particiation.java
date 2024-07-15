@@ -1,9 +1,12 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import helpers.DataAcces;
 
@@ -81,6 +84,39 @@ private void getId() throws SQLException, ClassNotFoundException{
         DataAcces.dispose(rSet, pStatement, connection);
     }
 }
+
+static public List<Tournoi> getTournoisParticipation(int idjoueur) throws SQLException, ClassNotFoundException{
+    Connection connection = DataAcces.getConnection();
+    PreparedStatement pStatement = null;
+    ResultSet rSet = null;
+    List<Tournoi> list = new ArrayList<>();
+    try {
+        pStatement = connection.prepareStatement("select * from get_tournois_pour_joueur(?)");
+        pStatement.setInt(1, idjoueur);
+    /// Traitement du resultat
+        rSet = pStatement.executeQuery();
+        while ( rSet.next() ) {
+            final int id = rSet.getInt("idTournoi");
+            final String nom = rSet.getString("nomTournoi");
+            final Date date = rSet.getDate("dateTournoi");
+            final int duree = rSet.getInt("duree");
+            final String lieu = rSet.getString("lieuTournoi");
+            final int idJeux = rSet.getInt("idJeux");
+            final String p_status = rSet.getString("participationstatus");
+
+            Tournoi tournoi = new Tournoi(id, nom, date, duree, lieu, idJeux,p_status);
+            list.add( tournoi );
+        }
+    } catch (Exception e) {
+        System.out.println("Probleme getAll Tournoi : ");
+        e.printStackTrace();
+    }
+    finally{
+        DataAcces.dispose(rSet, pStatement, connection);
+    }
+    return list;
+}
+
 /// CRUD
 
     public void save() throws ClassNotFoundException , SQLException{ 
