@@ -2,7 +2,10 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import helpers.DataAcces;
 
 public class Particiation {
     private int idParticipation;
@@ -10,9 +13,10 @@ public class Particiation {
     private int idTournoi;
     private int idState;
     private String state;
-    public Particiation(int idJoueur,int idTournoi){
+    public Particiation(int idJoueur,int idTournoi) throws ClassNotFoundException, SQLException{
         setIdJoueur(idJoueur);
         setIdTournoi(idTournoi);
+        getId();
     }
 
     public int getIdParticipation() {
@@ -54,7 +58,29 @@ public class Particiation {
     public void setState(String state) {
         this.state = state;
     }
-
+/// SQL GETTERS
+private void getId() throws SQLException, ClassNotFoundException{
+    Connection connection = DataAcces.getConnection();
+    PreparedStatement pStatement = null;
+    ResultSet rSet = null;
+    try {
+    /// Preparation du statement
+        pStatement = connection.prepareStatement("select * from Particiation Where idjoueur = ? AND idtournoi = ?");
+        pStatement.setInt(1, getIdJoueur());
+        pStatement.setInt(2, getIdTournoi());
+    /// Traitement du resultat
+        rSet = pStatement.executeQuery();
+        while ( rSet.next() ) {
+            final int id = rSet.getInt("idParticipation");
+            setIdParticipation(id);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    finally{
+        DataAcces.dispose(rSet, pStatement, connection);
+    }
+}
 /// CRUD
 
     public void save() throws ClassNotFoundException , SQLException{ 

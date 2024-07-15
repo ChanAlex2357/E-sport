@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import helpers.DataAcces;
+
 public class Equipe {
     private int idEquipe;
     private String nomEquipe;

@@ -29,6 +29,35 @@ INSERT INTO ParticipationState (state) values
 CREATE OR REPLACE VIEW v_participation as
 select Participation.* , ParticipationState.state from Participation join ParticipationState on Participation.idState = ParticipationState.idState;
 
+CREATE OR REPLACE FUNCTION get_tournois_pour_joueur(id_joueur INTEGER)
+RETURNS TABLE (
+    idTournoi INTEGER,
+    nomTournoi VARCHAR,
+    dateTournoi DATE,
+    duree INTEGER,
+    lieuTournoi VARCHAR,
+    idJeux INTEGER,
+    participationStatus VARCHAR
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        t.idTournoi,
+        t.nomTournoi,
+        t.dateTournoi,
+        t.duree,
+        t.lieuTournoi,
+        t.idJeux,
+        ps.state AS participationStatus
+    FROM 
+        Tournoi t
+    LEFT JOIN 
+        Participation p ON t.idTournoi = p.idTournoi AND p.idJoueur = id_joueur
+    LEFT JOIN 
+        ParticipationState ps ON p.idState = ps.idState;
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION calculer_age(date_naissance date)
 RETURNS integer AS $$
 DECLARE

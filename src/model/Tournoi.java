@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import helpers.DataAcces;
+
 public class Tournoi {
     int idTournoi;
     String nomTournoi;
@@ -15,14 +17,17 @@ public class Tournoi {
     int duree;
     String lieuTournoi;
     int idJeux;
+    String participationStatus;
     private Jeux jeux;
-    public Tournoi(int id , String nom , Date date , int duree , String lieu , int idJeux) {
+    public Tournoi(int id , String nom , Date date , int duree , String lieu , int idJeux,String participationStatus) {
         setIdTournoi(id);
         setNomTournoi(nom);
         setDateTournoi(date);
         setDuree(duree);
         setLieuTournoi(lieu);
         setIdJeux(idJeux);
+        getJeux();
+        setParticipationStatus(participationStatus);
     }
     public Tournoi(int id) throws ClassNotFoundException, SQLException{
         setIdTournoi(id);
@@ -78,6 +83,12 @@ public class Tournoi {
     private void setJeux(Jeux jeux){
         this.jeux = jeux;
     }
+    public String getParticipationStatus() {
+        return participationStatus;
+    }
+    public void setParticipationStatus(String participationStatus) {
+        this.participationStatus = participationStatus;
+    }
 
 /// sql getteurs
 public void getById(int id) throws SQLException, ClassNotFoundException{
@@ -128,7 +139,7 @@ static public List<Tournoi> getAll() throws SQLException, ClassNotFoundException
             final String lieu = rSet.getString("lieuTournoi");
             final int idJeux = rSet.getInt("idJeux");
 
-            Tournoi tournoi = new Tournoi(id, nom, date, duree, lieu, idJeux);
+            Tournoi tournoi = new Tournoi(id, nom, date, duree, lieu, idJeux,null);
             list.add( tournoi );
         }
     } catch (Exception e) {
@@ -206,7 +217,7 @@ static public List<Tournoi> search( String nom_ref , int  id_jeux , String debut
             final String lieu = rSet.getString("lieuTournoi");
             final int idJeux = rSet.getInt("idJeux");
 
-            Tournoi tournoi = new Tournoi(id, nom, date, duree, lieu, idJeux);
+            Tournoi tournoi = new Tournoi(id, nom, date, duree, lieu, idJeux,null);
             list.add( tournoi );
         }
     } catch (Exception e) {

@@ -9,6 +9,16 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+<!-- LOGIN JOUEUR -->
+ <servlet>
+    <servlet-name>LoginPlayer</servlet-name>
+    <servlet-class>controler.login.LoginPlayer</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>LoginPlayer</servlet-name>
+    <url-pattern>/playerlogin</url-pattern>
+</servlet-mapping>
+
 <!-- Sign Out -->
     <servlet>
         <servlet-name>SignOut</servlet-name>

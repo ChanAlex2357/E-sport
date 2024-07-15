@@ -6,6 +6,7 @@ import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
+import helpers.SessionChecker;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.CategoryEquipe;
@@ -15,7 +16,7 @@ import model.Organisateur;
 public class EquipeFormulaire extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (Organisateur.isOrgaConnected(req)) {
+        if (SessionChecker.isOrgaConnected(req)) {
             resp.sendRedirect("login");
             return;
         }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import helpers.DataAcces;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class Organisateur {
@@ -162,15 +163,5 @@ public static List<Organisateur> getAll() throws Exception {
         result+="\npass = "+getPassword();
 
         return result;
-    }
-/// VALIDATION DE CONNECTION
-    public static boolean isOrgaConnected(HttpServletRequest request){
-        return request.getSession(true).getAttribute("user_orga") == null;
-    }
-    public static void deconnectOrganisateur(HttpServletRequest request){
-        request.getSession(true).removeAttribute("user_orga");
-    }
-    public void connectOrganisateur(HttpServletRequest request){
-        request.getSession(true).setAttribute("user_orga", this);
     }
 }

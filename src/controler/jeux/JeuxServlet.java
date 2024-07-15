@@ -5,17 +5,17 @@ import java.sql.SQLException;
 import java.util.List;
 
 import controler.HomeServlet;
+import helpers.SessionChecker;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Jeux;
-import model.Organisateur;
 import model.TypeJeux;
 
 public class JeuxServlet extends HomeServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (Organisateur.isOrgaConnected(req)) {
+        if (SessionChecker.isOrgaConnected(req)) {
             resp.sendRedirect("login");
             return;
         }

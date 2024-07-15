@@ -64,3 +64,5 @@ CREATE TABLE Participation (
 );
 ALTER TABLE Participation add UNIQUE (idJoueur,idTournoi);
 
+Insert into participation(idjoueur,idtournoi,idstate) values (2,1,1);
+select * from get_tournois_pour_joueur(2);

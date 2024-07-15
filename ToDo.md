@@ -240,11 +240,8 @@ MODEL => gets , sets , getById , List getAll , update , delete , save
   - [x] CRUD
     - [x] save
     - [x] update
-  <!-- - [ ] flltre
-    - [ ] par joueur
-    - [ ] par tournoi
-    - [ ] par status -->
-- [ ] integration (SERVLET)
-  - [ ] TournoiServlet
-    - [ ] recuperation idJoueur,idTournoi
-    - [ ] savegarder la participation
+- [x] integration (SERVLET)
+  - [x] TournoiServlet
+    - [x] recuperation idJoueur,idTournoi
+    - [x] modifier la registration
+    - [x] savegarder la participation

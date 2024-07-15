@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import helpers.DataAcces;
+
 public class Jeux {
     private int idJeux;
     private String nomJeux;
