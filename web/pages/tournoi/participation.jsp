@@ -53,5 +53,5 @@
 </div>
 <%@ include file="../static/footer.html"%>
 <script>
-  activeCurrentPage("tournoi-link");
+    activeCurrentPage("participation-link");
 </script>
